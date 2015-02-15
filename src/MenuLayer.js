@@ -23,7 +23,7 @@ var MenuLayer = cc.Layer.extend({
         //5.
         cc.MenuItemFont.setFontSize(60);
 
-        var start_n = new StartButton(res.start_n_outer_png, res.start_n_inner_png)
+        var start_n = new CompositeButton([res.start_n_outer_png, res.start_n_inner_png])
 
         var start_s = new cc.Sprite(res.start_s_png)
         start_s.color = new cc.color(0, 255, 0, 0)
