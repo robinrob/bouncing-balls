@@ -20,23 +20,10 @@ var MenuLayer = cc.Layer.extend({
         spritebg.setPosition(centerpos);
         this.addChild(spritebg);
 
-        //5.
-        cc.MenuItemFont.setFontSize(10);
-
-        var start_n = new CompositeSprite([res.button_outer_png, res.button_n_inner_png, res.start_n_text_png])
-        start_n.setColor(g_buttonOuterColor)
-        start_n.setChildColor(0, g_buttonInnerColor)
-        start_n.setChildColor(1, g_buttonTextColor)
-
-        var start_s = new CompositeSprite([res.button_outer_png, res.button_s_inner_png, res.start_s_text_png])
-        start_s.setColor(g_buttonOuterColor)
-        start_s.setChildColor(0, g_buttonInnerColor)
-        start_s.setChildColor(1, g_buttonTextColor)
-
-        //6.create a menu and assign onPlay event callback to it
+        //5.create a menu and assign onPlay event callback to it
         var menuItemPlay = new cc.MenuItemSprite(
-            start_n, // normal state image
-            start_s, //select state image
+            components.startButton().normal,
+            components.startButton().selected,
             this.onPlay, this);
         var menu = new cc.Menu(menuItemPlay);  //7. create the menu
         menu.setPosition(centerpos);

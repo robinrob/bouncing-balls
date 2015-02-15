@@ -14,6 +14,7 @@
         "src/AnimationLayer.js",
         "src/BackgroundLayer.js",
         "src/Coin.js",
+        "src/components.js",
         "src/CompositeSprite.js",
         "src/GameOverLayer.js",
         "src/globals.js",

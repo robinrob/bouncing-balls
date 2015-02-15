@@ -14,3 +14,11 @@ components and code patterns in future games.
 -- Check Developer Console -> Settings -> Disable Cache
 -- Check not more than one Cocos process running - each process runs on a
 different port number
+
+
+
+
+TODO:
+
+Single-instance restart button is causing probs in GameOverLayer as the restart
+was created from scratch each time the menu loaded before.
