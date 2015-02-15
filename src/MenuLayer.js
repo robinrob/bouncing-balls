@@ -23,12 +23,12 @@ var MenuLayer = cc.Layer.extend({
         //5.
         cc.MenuItemFont.setFontSize(10);
 
-        var start_n = new CompositeButton([res.button_outer_png, res.button_n_inner_png, res.start_n_text_png])
+        var start_n = new CompositeSprite([res.button_outer_png, res.button_n_inner_png, res.start_n_text_png])
         start_n.setColor(g_buttonOuterColor)
         start_n.setChildColor(0, g_buttonInnerColor)
         start_n.setChildColor(1, g_buttonTextColor)
 
-        var start_s = new CompositeButton([res.button_outer_png, res.button_s_inner_png, res.start_s_text_png])
+        var start_s = new CompositeSprite([res.button_outer_png, res.button_s_inner_png, res.start_s_text_png])
         start_s.setColor(g_buttonOuterColor)
         start_s.setChildColor(0, g_buttonInnerColor)
         start_s.setChildColor(1, g_buttonTextColor)

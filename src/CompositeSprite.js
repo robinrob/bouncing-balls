@@ -1,4 +1,4 @@
-var CompositeButton = cc.Sprite.extend({
+var CompositeSprite = cc.Sprite.extend({
     ctor: function (resources) {
         var child, childX, childY
         cc.log("Sprite.ctor ...")
