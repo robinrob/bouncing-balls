@@ -23,13 +23,18 @@ var MenuLayer = cc.Layer.extend({
         //5.
         cc.MenuItemFont.setFontSize(60);
 
-        //6.create a menu and assign onPlay event callback to it
-        //var start_n = new cc.Sprite(res.start_n_png)
-        //start_n.color = cc.Color(0, 255, 0, 0)
+        var start_n_outer = new cc.Sprite(res.start_n_outer_png)
+        start_n_outer.color = new cc.color(0, 255, 0, 0)
+        var start_n_inner = new cc.Sprite(res.start_n_inner_png)
 
+        var start_s = new cc.Sprite(res.start_s_png)
+        start_s.color = new cc.color(0, 255, 0, 0)
+
+
+        //6.create a menu and assign onPlay event callback to it
         var menuItemPlay = new cc.MenuItemSprite(
-            new cc.Sprite(res.start_n_png), // normal state image
-            new cc.Sprite(res.start_s_png), //select state image
+            start_n, // normal state image
+            start_s, //select state image
             this.onPlay, this);
         var menu = new cc.Menu(menuItemPlay);  //7. create the menu
         menu.setPosition(centerpos);
