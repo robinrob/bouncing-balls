@@ -24,6 +24,9 @@ var MenuLayer = cc.Layer.extend({
         cc.MenuItemFont.setFontSize(60);
 
         //6.create a menu and assign onPlay event callback to it
+        //var start_n = new cc.Sprite(res.start_n_png)
+        //start_n.color = cc.Color(0, 255, 0, 0)
+
         var menuItemPlay = new cc.MenuItemSprite(
             new cc.Sprite(res.start_n_png), // normal state image
             new cc.Sprite(res.start_s_png), //select state image
@@ -40,15 +43,5 @@ var MenuLayer = cc.Layer.extend({
     onPlay : function(){
         cc.log("MenuLayer.onPlay ...")
         cc.director.runScene(new PlayScene());
-    }
-});
-
-var MenuScene = cc.Scene.extend({
-    onEnter:function () {
-        cc.log("MenuScene.onEnter ...")
-        this._super();
-        var layer = new MenuLayer();
-        layer.init();
-        this.addChild(layer);
     }
 });
