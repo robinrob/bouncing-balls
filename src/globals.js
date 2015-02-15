@@ -1,6 +1,7 @@
 cc.log("Setting globals ...")
 var g_groundHeight = 57;
 var g_runnerStartX = 80;
+
 var g_buttonOuterColor = new cc.color(0, 255, 0, 0)
 var g_buttonInnerColor = new cc.color(0, 0, 255, 0)
 var g_buttonTextColor = new cc.color(0, 255, 0, 0)

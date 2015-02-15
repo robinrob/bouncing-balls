@@ -11,10 +11,21 @@ var GameOverLayer = cc.LayerColor.extend({
         var winSize = cc.director.getWinSize();
 
         var centerPos = cc.p(winSize.width / 2, winSize.height / 2);
-        cc.MenuItemFont.setFontSize(30);
+        cc.MenuItemFont.setFontSize(10);
+
+        var restart_n = new CompositeButton([res.button_outer_png, res.button_n_inner_png, res.restart_n_text_png])
+        restart_n.setColor(g_buttonOuterColor)
+        restart_n.setChildColor(0, g_buttonInnerColor)
+        restart_n.setChildColor(1, g_buttonTextColor)
+
+        var restart_s = new CompositeButton([res.button_outer_png, res.button_s_inner_png, res.restart_s_text_png])
+        restart_s.setColor(g_buttonOuterColor)
+        restart_s.setChildColor(0, g_buttonInnerColor)
+        restart_s.setChildColor(1, g_buttonTextColor)
+
         var menuItemRestart = new cc.MenuItemSprite(
-            new cc.Sprite(res.restart_n_png),
-            new cc.Sprite(res.restart_s_png),
+            restart_n,
+            restart_s,
             this.onRestart, this);
         var menu = new cc.Menu(menuItemRestart);
         menu.setPosition(centerPos);
