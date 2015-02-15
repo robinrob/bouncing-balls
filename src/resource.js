@@ -5,8 +5,9 @@ var start_color = "lime-green-blue"
 
 var res = {
     helloBG_png : "res/bouncing-ball-bg.jpg",
-    start_n_outer_png : "res/start_n-outer-orange.png",
-    start_n_inner_png : "res/start_n-inner-blue.png",
+    start_n_outer_png : "res/start_n-outer.png",
+    start_n_inner_png : "res/start_n-inner.png",
+    start_n_text_png : "res/start_n-text.png",
     start_s_png : "res/start_s-" + start_color + ".png",
     PlayBG_png  : "res/PlayBG.png",
     runner_png  : "res/running.png",
