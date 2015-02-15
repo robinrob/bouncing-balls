@@ -21,6 +21,7 @@
         "src/MenuScene.js",
         "src/PlayScene.js",
         "src/SimpleRecognizer.js",
+        "src/StartButton.js",
         "src/StatusLayer.js",
         "src/resource.js"
     ]
