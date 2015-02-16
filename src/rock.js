@@ -22,13 +22,13 @@ var Rock = cc.Class.extend({
 
         this.sprite = new cc.PhysicsSprite("#rock.png");
         var body = new cp.StaticBody();
-        body.setPos(cc.p(posX, this.sprite.getContentSize().height / 2 + g_groundHeight));
+        body.setPos(cc.p(posX, this.sprite.getContentSize().height / 2 + mrrobinsmith.g_groundHeight));
         this.sprite.setBody(body);
 
         this.shape = new cp.BoxShape(body,
             this.sprite.getContentSize().width,
             this.sprite.getContentSize().height);
-        this.shape.setCollisionType(SpriteTag.rock);
+        this.shape.setCollisionType(mrrobinsmith.SpriteTag.rock);
 
         this.space.addStaticShape(this.shape);
         spriteSheet.addChild(this.sprite);

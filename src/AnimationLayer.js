@@ -58,7 +58,7 @@ var AnimationLayer = cc.Layer.extend({
         // 2. init the runner physic body
         this.body = new cp.Body(1, cp.momentForBox(1, contentSize.width, contentSize.height));
         //3. set the position of the runner
-        this.body.p = cc.p(g_runnerStartX, g_groundHeight + contentSize.height / 2);
+        this.body.p = cc.p(mrrobinsmith.g_runnerStartX, mrrobinsmith.g_groundHeight + contentSize.height / 2);
         //4. apply impulse to the body
         this.body.applyImpulse(cp.v(150, 0), cp.v(0, 0));//run speed
         //5. add the created body to space
@@ -181,14 +181,14 @@ var AnimationLayer = cc.Layer.extend({
 
     getEyeX:function () {
         cc.log("AnimationLayer.getEyeX ...")
-        return this.sprite.getPositionX() - g_runnerStartX;
+        return this.sprite.getPositionX() - mrrobinsmith.g_runnerStartX;
     },
 
     update:function (dt) {
         cc.log("AnimationLayer.update ...")
         // update meter
-        var statusLayer = this.getParent().getParent().getChildByTag(TagOfLayer.Status);
-        statusLayer.updateMeter(this.sprite.getPositionX() - g_runnerStartX);
+        var statusLayer = this.getParent().getParent().getChildByTag(mrrobinsmith.TagOfLayer.Status);
+        statusLayer.updateMeter(this.sprite.getPositionX() - mrrobinsmith.g_runnerStartX);
 
         //in the update method of AnimationLayer
         // check and update runner stat

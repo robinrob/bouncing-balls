@@ -39,7 +39,7 @@ var Coin = cc.Class.extend({
         this.sprite.setBody(body);
 
         this.shape = new cp.CircleShape(body, radius, cp.vzero);
-        this.shape.setCollisionType(SpriteTag.coin);
+        this.shape.setCollisionType(mrrobinsmith.SpriteTag.coin);
         //Sensors only call collision callbacks, and never generate real collisions
         this.shape.setSensor(true);
 

@@ -22,8 +22,8 @@ var MenuLayer = cc.Layer.extend({
 
         //5.create a menu and assign onPlay event callback to it
         var menuItemPlay = new cc.MenuItemSprite(
-            components.startButton().normal,
-            components.startButton().selected,
+            ui.startButton().normal,
+            ui.startButton().selected,
             this.onPlay, this);
         var menu = new cc.Menu(menuItemPlay);  //7. create the menu
         menu.setPosition(centerpos);

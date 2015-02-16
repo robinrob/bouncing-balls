@@ -14,8 +14,8 @@ var GameOverLayer = cc.LayerColor.extend({
         cc.MenuItemFont.setFontSize(10);
 
         var menuItemRestart = new cc.MenuItemSprite(
-            components.restartButton().normal,
-            components.restartButton().selected,
+            ui.restartButton().normal,
+            ui.restartButton().selected,
             this.onRestart, this);
         var menu = new cc.Menu(menuItemRestart);
         menu.setPosition(centerPos);

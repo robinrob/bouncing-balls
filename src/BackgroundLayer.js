@@ -121,7 +121,7 @@ var BackgroundLayer = cc.Layer.extend({
 
     update:function (dt) {
         cc.log("BackgroundLayer.update ...")
-        var animationLayer = this.getParent().getChildByTag(TagOfLayer.Animation);
+        var animationLayer = this.getParent().getChildByTag(mrrobinsmith.TagOfLayer.Animation);
         var eyeX = animationLayer.getEyeX();
         this.checkAndReload(eyeX);
     }

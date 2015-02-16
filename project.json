@@ -14,7 +14,6 @@
         "src/AnimationLayer.js",
         "src/BackgroundLayer.js",
         "src/Coin.js",
-        "src/components.js",
         "src/CompositeSprite.js",
         "src/GameOverLayer.js",
         "src/globals.js",
@@ -24,7 +23,7 @@
         "src/PlayScene.js",
         "src/SimpleRecognizer.js",
         "src/StatusLayer.js",
-        "src/resource.js"
+        "src/resource.js",
+        "src/ui.js"
     ]
-
 }
