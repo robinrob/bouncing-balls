@@ -26,20 +26,20 @@ var BackgroundLayer = cc.Layer.extend({
 //
 //        //create the background image and position it at the center of screen
 //        var centerPos = cc.p(winsize.width / 2, winsize.height / 2);
-//        var spriteBG = new cc.Sprite(res.PlayBG_png);
+//        var spriteBG = new cc.Sprite(mrrobinsmith.res.PlayBG_png);
 //        spriteBG.setPosition(centerPos);
 //        this.addChild(spriteBG);
 
-        this.map00 = new cc.TMXTiledMap(res.map00_tmx);
+        this.map00 = new cc.TMXTiledMap(mrrobinsmith.res.map00_tmx);
         this.addChild(this.map00);
         this.mapWidth = this.map00.getContentSize().width;
-        this.map01 = new cc.TMXTiledMap(res.map01_tmx);
+        this.map01 = new cc.TMXTiledMap(mrrobinsmith.res.map01_tmx);
         this.map01.setPosition(cc.p(this.mapWidth, 0));
         this.addChild(this.map01);
 
         // create sprite sheet
-        cc.spriteFrameCache.addSpriteFrames(res.background_plist);
-        this.spriteSheet = new cc.SpriteBatchNode(res.background_png);
+        cc.spriteFrameCache.addSpriteFrames(mrrobinsmith.res.background_plist);
+        this.spriteSheet = new cc.SpriteBatchNode(mrrobinsmith.res.background_png);
         this.addChild(this.spriteSheet);
 
         this.loadObjects(this.map00, 0);

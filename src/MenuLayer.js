@@ -16,7 +16,7 @@ var MenuLayer = cc.Layer.extend({
         var centerpos = cc.p(winsize.width / 2, winsize.height / 2);
 
         //4. create a background image and set it's position at the center of the screen
-        var spritebg = new cc.Sprite(res.helloBG_png);
+        var spritebg = new cc.Sprite(mrrobinsmith.res.helloBG_png);
         spritebg.setPosition(centerpos);
         this.addChild(spritebg);
 
@@ -29,9 +29,9 @@ var MenuLayer = cc.Layer.extend({
         menu.setPosition(centerpos);
         this.addChild(menu);
 
-        //cc.audioEngine.preloadMusic(res.music_background);
-        //cc.audioEngine.preloadEffect(res.music_jump);
-        //cc.audioEngine.preloadEffect(res.music_pickup_coin);
+        //cc.audioEngine.preloadMusic(mrrobinsmith.res.music_background);
+        //cc.audioEngine.preloadEffect(mrrobinsmith.res.music_jump);
+        //cc.audioEngine.preloadEffect(mrrobinsmith.res.music_pickup_coin);
     },
 
     onPlay : function(){

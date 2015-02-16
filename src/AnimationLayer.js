@@ -36,8 +36,8 @@ var AnimationLayer = cc.Layer.extend({
         this._super();
 
         // create sprite sheet
-        cc.spriteFrameCache.addSpriteFrames(res.fish_plist);
-        this.spriteSheet = new cc.SpriteBatchNode(res.fish_png);
+        cc.spriteFrameCache.addSpriteFrames(mrrobinsmith.res.fish_plist);
+        this.spriteSheet = new cc.SpriteBatchNode(mrrobinsmith.res.fish_png);
         this.addChild(this.spriteSheet);
 
 

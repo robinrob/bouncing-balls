@@ -23,7 +23,6 @@
         "src/PlayScene.js",
         "src/SimpleRecognizer.js",
         "src/StatusLayer.js",
-        "src/resource.js",
         "src/ui.js"
     ]
 }

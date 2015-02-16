@@ -9,7 +9,7 @@ var PlayScene = cc.Scene.extend({
         this.shapesToRemove.push(shapes[1]);
 
         //add the collect coin audio effect in *collisionCoinBegin* method of PlayScene
-        cc.audioEngine.playEffect(res.music_pickup_coin);
+        cc.audioEngine.playEffect(mrrobinsmith.res.music_pickup_coin);
 
         var statusLayer = this.getChildByTag(mrrobinsmith.TagOfLayer.Status);
         statusLayer.addCoin(1);
@@ -67,7 +67,7 @@ var PlayScene = cc.Scene.extend({
         this.addChild(new StatusLayer(), 0, mrrobinsmith.TagOfLayer.Status);
 
         //add background music
-        cc.audioEngine.playMusic(res.music_background, true);
+        cc.audioEngine.playMusic(mrrobinsmith.res.music_background, true);
 
         this.scheduleUpdate();
     },

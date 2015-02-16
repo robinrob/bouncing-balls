@@ -55,7 +55,7 @@ cc.game.onStart = function(){
     // E.g. when device rotated
     cc.view.resizeWithBrowserSize(true);
     //load resources
-    cc.LoaderScene.preload(mrrobinsmith.g_resources, function () {
+    cc.LoaderScene.preload(mrrobinsmith.resources, function () {
         cc.director.runScene(new MenuScene());
     }, this);
 };
