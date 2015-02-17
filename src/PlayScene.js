@@ -2,28 +2,24 @@ var PlayScene = cc.Scene.extend({
     space:null,
     shapesToRemove :[],
 
-    collisionCoinBegin:function (arbiter, space) {
-        cc.log("PlayScene.collisionCoinBegin ...")
-        var shapes = arbiter.getShapes();
-        // shapes[0] is runner
-        this.shapesToRemove.push(shapes[1]);
 
-        //add the collect coin audio effect in *collisionCoinBegin* method of PlayScene
-        cc.audioEngine.playEffect(mrrobinsmith.res.music_pickup_coin);
+    onEnter:function () {
+        cc.log("PlayScene.onEnter ...")
+        this._super();
+        this.shapesToRemove = [];
+        this.initPhysics();
+        this.gameLayer = new cc.Layer();
 
-        var statusLayer = this.getChildByTag(mrrobinsmith.TagOfLayer.Status);
-        statusLayer.addCoin(1);
-    },
+        //add Background layer and Animation layer to gameLayer
+        this.gameLayer.addChild(new BackgroundLayer(this.space), 0, mrrobinsmith.TagOfLayer.background);
+        this.gameLayer.addChild(new AnimationLayer(this.space), 0, mrrobinsmith.TagOfLayer.Animation);
+        this.addChild(this.gameLayer);
+        this.addChild(new StatusLayer(), 0, mrrobinsmith.TagOfLayer.Status);
 
-    collisionRockBegin:function (arbiter, space) {
-        cc.log("PlayScene.collisionRockBegin ...")
-        cc.log("==game over");
+        //add background music
+        cc.audioEngine.playMusic(mrrobinsmith.res.music_background, true);
 
-        //stop bg music
-        cc.audioEngine.stopMusic();
-
-        cc.director.pause();
-        this.addChild(new GameOverLayer());
+        this.scheduleUpdate();
     },
 
     // init space of chipmunk
@@ -53,23 +49,28 @@ var PlayScene = cc.Scene.extend({
             this.collisionRockBegin.bind(this), null, null, null)
     },
 
-    onEnter:function () {
-        cc.log("PlayScene.onEnter ...")
-        this._super();
-        this.shapesToRemove = [];
-        this.initPhysics();
-        this.gameLayer = new cc.Layer();
+    collisionCoinBegin:function (arbiter, space) {
+        cc.log("PlayScene.collisionCoinBegin ...")
+        var shapes = arbiter.getShapes();
+        // shapes[0] is runner
+        this.shapesToRemove.push(shapes[1]);
 
-        //add Background layer and Animation layer to gameLayer
-        this.gameLayer.addChild(new BackgroundLayer(this.space), 0, mrrobinsmith.TagOfLayer.background);
-        this.gameLayer.addChild(new AnimationLayer(this.space), 0, mrrobinsmith.TagOfLayer.Animation);
-        this.addChild(this.gameLayer);
-        this.addChild(new StatusLayer(), 0, mrrobinsmith.TagOfLayer.Status);
+        //add the collect coin audio effect in *collisionCoinBegin* method of PlayScene
+        cc.audioEngine.playEffect(mrrobinsmith.res.music_pickup_coin);
 
-        //add background music
-        cc.audioEngine.playMusic(mrrobinsmith.res.music_background, true);
+        var statusLayer = this.getChildByTag(mrrobinsmith.TagOfLayer.Status);
+        statusLayer.addCoin(1);
+    },
 
-        this.scheduleUpdate();
+    collisionRockBegin:function (arbiter, space) {
+        cc.log("PlayScene.collisionRockBegin ...")
+        cc.log("==game over");
+
+        //stop bg music
+        cc.audioEngine.stopMusic();
+
+        cc.director.pause();
+        this.addChild(new GameOverLayer());
     },
 
     update:function (dt) {
@@ -91,4 +92,3 @@ var PlayScene = cc.Scene.extend({
         this.shapesToRemove = [];
     }
 });
-

@@ -22,13 +22,6 @@ var BackgroundLayer = cc.Layer.extend({
     init:function () {
         cc.log("BackgroundLayer.init ...")
         this._super();
-//        var winsize = cc.director.getWinSize();
-//
-//        //create the background image and position it at the center of screen
-//        var centerPos = cc.p(winsize.width / 2, winsize.height / 2);
-//        var spriteBG = new cc.Sprite(mrrobinsmith.res.PlayBG_png);
-//        spriteBG.setPosition(centerPos);
-//        this.addChild(spriteBG);
 
         this.map00 = new cc.TMXTiledMap(mrrobinsmith.res.map00_tmx);
         this.addChild(this.map00);
@@ -121,8 +114,8 @@ var BackgroundLayer = cc.Layer.extend({
 
     update:function (dt) {
         cc.log("BackgroundLayer.update ...")
-        var animationLayer = this.getParent().getChildByTag(mrrobinsmith.TagOfLayer.Animation);
-        var eyeX = animationLayer.getEyeX();
-        this.checkAndReload(eyeX);
+        //var animationLayer = this.getParent().getChildByTag(mrrobinsmith.TagOfLayer.Animation);
+        //var eyeX = animationLayer.getEyeX();
+        //this.checkAndReload(eyeX);
     }
 });

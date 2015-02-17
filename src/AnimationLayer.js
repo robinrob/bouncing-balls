@@ -40,7 +40,9 @@ var AnimationLayer = cc.Layer.extend({
         this.spriteSheet = new cc.SpriteBatchNode(mrrobinsmith.res.fish_png);
         this.addChild(this.spriteSheet);
 
-
+        var winSize = cc.director.getWinSize();
+        var draw = new cc.DrawNode()
+        draw.drawCircle(cc.p(winSize.width / 2, winSize.height / 2), 50, cc.degreesToRadians(90), 50, true, 2, cc.color(0, 255, 255, 255));
         // init runningAction
 //        var animFrames = [];
 //        for (var i = 1; i < 4; i++) {
@@ -206,5 +208,6 @@ var AnimationLayer = cc.Layer.extend({
                 this.sprite.runAction(this.runningAction);
             }
         }
+
     }
 });
