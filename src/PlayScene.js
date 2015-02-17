@@ -82,7 +82,7 @@ var PlayScene = cc.Scene.extend({
         animationLayer.update(dt);
         var eyeX = animationLayer.getEyeX();
 
-        this.gameLayer.setPosition(cc.p(-eyeX,0));
+        //this.gameLayer.setPosition(cc.p(-eyeX,0));
 
         // Simulation cpSpaceAddPostStepCallback
         for(var i = 0; i < this.shapesToRemove.length; i++) {

@@ -209,5 +209,8 @@ var AnimationLayer = cc.Layer.extend({
             }
         }
 
+        if (this.sprite.x >= cc.director.getWinSize().width) {
+            this.sprite.x = 0 - this.sprite.width / 2
+        }
     }
 });

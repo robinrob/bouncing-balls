@@ -29,9 +29,7 @@ var MenuLayer = cc.Layer.extend({
         menu.setPosition(centerpos);
         this.addChild(menu);
 
-        //cc.audioEngine.preloadMusic(mrrobinsmith.res.music_background);
-        //cc.audioEngine.preloadEffect(mrrobinsmith.res.music_jump);
-        //cc.audioEngine.preloadEffect(mrrobinsmith.res.music_pickup_coin);
+        this.onPlay()
     },
 
     onPlay : function(){
