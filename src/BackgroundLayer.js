@@ -9,7 +9,7 @@ var BackgroundLayer = cc.Layer.extend({
     objects:[],
 
     ctor:function (space) {
-        cc.log("Background.cotr ...")
+        cc.log("Background.ctor ...")
         this._super();
 
         // clean old array here
