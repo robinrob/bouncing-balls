@@ -1,15 +1,15 @@
-var Ball = cp.Body.extend({
-    sprite: null,
+var Ball = cc.PhysicsSprite.extend({
+    body: null,
     shape: null,
 
-    ctor:function (num, moment, sprite, shape) {
+    ctor:function (num, moment, body, shape) {
         cc.log("Ball.ctor ...")
         this._super(num, moment);
 
-        this.sprite = sprite
+        this.body = body
         this.shape = shape
 
-        this.sprite.addBody(this);
+        this.addBody(this.body);
     },
 
     initAction:function () {
@@ -23,19 +23,19 @@ var Ball = cp.Body.extend({
         }
 
         var animation = new cc.Animation(animFrames, 0.1);
-        this.runningAction = new cc.RepeatForever(new cc.Animate(animation));
-        this.runningAction.retain();
+        this.body.runningAction = new cc.RepeatForever(new cc.Animate(animation));
+        this.body.runningAction.retain();
     },
 
     move:function() {
-        var vel = body.getVel();
+        var vel = this.body.getVel();
 
-        if (this.sprite.x >= cc.director.getWinSize().width) {
-            this.sprite.x = 0 - this.sprite.width / 2
+        if (this.x >= cc.director.getWinSize().width) {
+            this.x = 0 - this.width / 2
         }
     },
 
     destroy:function() {
-        this.runningAction.release();
+        this.body.runningAction.release();
     }
 })
