@@ -1,85 +1,55 @@
 var AnimationLayer = cc.Layer.extend({
-    spriteSheet:null,
-
-    space:null,
-
-    balls:[],
+    balls: null,
 
     ctor:function (space) {
         cc.log("AnimationLayer.ctor ...")
         this._super();
         this.space = space;
-        this.init();
-
-        this._debugNode = new cc.PhysicsDebugNode(this.space);
-        this._debugNode.setVisible(false);
-        // Parallax ratio and offset
-        this.addChild(this._debugNode, 10);
-    },
-
-    init:function () {
-        cc.log("AnimationLayer.init ...")
-        this._super();
+        this.balls = []
 
         // create sprite sheet
         cc.spriteFrameCache.addSpriteFrames(mrrobinsmith.res.fish_plist);
         this.spriteSheet = new cc.SpriteBatchNode(mrrobinsmith.res.fish_png);
         this.addChild(this.spriteSheet);
 
-        var winSize = cc.director.getWinSize();
-        //var draw = new cc.DrawNode()
-        //draw.drawCircle(cc.p(winSize.width / 2, winSize.height / 2), 50, cc.degreesToRadians(90), 50, true, 2, cc.color(0, 255, 255, 255));
+        this.init();
 
-        var i = 10;
-        for (i = 0; i < 10; ++i) {
-            // create PhysicsSprite with a sprite frame name
-            var sprite = new cc.PhysicsSprite("#fish1.png");
-            var contentSize = sprite.getContentSize();
+        this._debugNode = new cc.PhysicsDebugNode(this.space);
+        this._debugNode.setVisible(false);
+        // Parallax ratio and offset
+        this.addChild(this._debugNode, 10);
 
-            // create shape for the sprite
-            var shape = new cp.BoxShape(body, contentSize.width - 14, contentSize.height);
+        this.initAction();
+    },
 
-            // add shape to space
-            this.space.addShape(shape);
+    init:function () {
+        cc.log("AnimationLayer.init ...")
+        this._super();
 
-            // create the Ball with sprite and shape
-            var ball = new Ball(
-                1,
-                cp.momentForBox(1, contentSize.width, contentSize.height),
-                sprite,
-                shape
-            );
-
-            // set the position of the ball
-            ball.p = cc.p(mrrobinsmith.g_runnerStartX, mrrobinsmith.g_groundHeight + contentSize.height / 2);
-            // apply impulse to the body
-            ball.applyImpulse(cp.v(150, 0), cp.v(0, 0));//run speed
-            // add the created body to space
-            this.space.addBody(ball);
+        for (var i = 0; i < 10; ++i) {
+            var ball = new Ball(this.spriteSheet, this.space);
+            cc.log("HEREcdf ...")
+            console.log("Ball: " + ball);
+            this.balls.push(ball);
         }
+    },
 
-        this.balls.each(function(ball) {
-            ball.initAction()
-            ball.sprite.runAction(ball.runningAction)
-            this.spriteSheet.addChild(ball.sprite);
+    initAction:function () {
+        cc.log("AnimationLayer.initAction ...")
+        this.balls.forEach(function(ball) {
+            ball.initAction();
         })
     },
 
     onExit:function() {
-        cc.log("AnimationLayer.onExit ...")
-
-        this.balls.foreach(function(ball) {
-            ball.destroy();
-        })
-
+        cc.log("AnimationLayer.onExit ...");
         this._super();
     },
 
     update:function (dt) {
         cc.log("AnimationLayer.update ...")
-
-        this.balls.foreach(function(ball) {
-            ball.move();
+        this.balls.forEach(function(ball) {
+          ball.move(dt)
         })
     }
 });

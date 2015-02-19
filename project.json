@@ -12,6 +12,7 @@
 
     "jsList" : [
         "src/AnimationLayer.js",
+        "src/Ball.js",
         "src/BackgroundLayer.js",
         "src/Coin.js",
         "src/CompositeSprite.js",

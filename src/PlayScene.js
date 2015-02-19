@@ -80,15 +80,5 @@ var PlayScene = cc.Scene.extend({
 
         var animationLayer = this.gameLayer.getChildByTag(mrrobinsmith.TagOfLayer.Animation);
         animationLayer.update(dt);
-        var eyeX = animationLayer.getEyeX();
-
-        //this.gameLayer.setPosition(cc.p(-eyeX,0));
-
-        // Simulation cpSpaceAddPostStepCallback
-        for(var i = 0; i < this.shapesToRemove.length; i++) {
-            var shape = this.shapesToRemove[i];
-            this.gameLayer.getChildByTag(mrrobinsmith.TagOfLayer.background).removeObjectByShape(shape);
-        }
-        this.shapesToRemove = [];
     }
 });
