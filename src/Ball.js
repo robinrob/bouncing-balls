@@ -31,8 +31,9 @@ var Ball = cc.Node.extend({
         this.spriteSheet.addChild(this.sprite);
 
         var contentSize = this.sprite.getContentSize();
-        // 2. init the runner physic body
-        this.body = new cp.Body(1, cp.momentForBox(1, contentSize.width, contentSize.height));
+
+        this.body = new cp.Body(10, cp.momentForCircle(10, 0, this.radius, cp.v(0,0)));
+        //this.body = new cp.Body(1, cp.momentForBox(1, contentSize.width, contentSize.height));
 
         this.body.p = cc.p(this.position.x, this.position.y);
 
@@ -40,8 +41,8 @@ var Ball = cc.Node.extend({
 
         this.space.addBody(this.body);
 
-        this.shape = new cp.CircleShape(this.body, this.radius, 10)
-        this.shape = new cp.BoxShape(this.body, this.radius * 2, this.radius * 2);
+        this.shape = new cp.CircleShape(this.body, this.radius, cp.v(0,0))
+        //this.shape = new cp.BoxShape(this.body, this.radius * 2, this.radius * 2);
         this.shape.setElasticity(0.8)
 
         this.space.addShape(this.shape)
