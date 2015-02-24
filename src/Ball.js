@@ -20,6 +20,7 @@ var Ball = cc.Node.extend({
     },
 
     init:function() {
+        this._super()
         //this.draw = new cc.DrawNode();
         //this.addChild(this.draw)
         //

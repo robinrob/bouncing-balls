@@ -28,6 +28,7 @@ var PlayScene = cc.Scene.extend({
         var winSize = cc.director.getWinSize()
 
         var ground = new cp.SegmentShape(this.space.staticBody, cp.v(0,0), cp.v(winSize.width,0), 0)
+
         this.space.addStaticShape(ground);
     },
 
