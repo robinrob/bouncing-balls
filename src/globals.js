@@ -29,7 +29,10 @@ mrrobinsmith.res = {
     start_s_text_png: "res/start_s-text.png",
 
     restart_n_text_png: "res/restart_n-text.png",
-    restart_s_text_png: "res/restart_s-text.png"
+    restart_s_text_png: "res/restart_s-text.png",
+
+    fish_png  : "res/fish.png",
+    fish_plist : "res/fish.plist"
 };
 
 mrrobinsmith.resources = [];

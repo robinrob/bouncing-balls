@@ -10,11 +10,8 @@ var PlayScene = cc.Scene.extend({
         this.initPhysics();
         this.gameLayer = new cc.Layer();
 
-        //add Background layer and Animation layer to gameLayer
-        //this.gameLayer.addChild(new BackgroundLayer(this.space), 0, mrrobinsmith.TagOfLayer.background);
         this.gameLayer.addChild(new AnimationLayer(this.space), 0, mrrobinsmith.TagOfLayer.Animation);
         this.addChild(this.gameLayer);
-        //this.addChild(new StatusLayer(), 0, mrrobinsmith.TagOfLayer.Status);
 
         this.scheduleUpdate();
     },
@@ -28,11 +25,10 @@ var PlayScene = cc.Scene.extend({
         this.space.gravity = cp.v(0, -200);
 
         // 3. set up Walls
-        var wallBottom = new cp.SegmentShape(this.space.staticBody,
-            cp.v(0, mrrobinsmith.g_groundHeight),// start point
-            cp.v(4294967295, mrrobinsmith.g_groundHeight),// MAX INT:4294967295
-            0);// thickness of wall
-        this.space.addStaticShape(wallBottom);
+        var winSize = cc.director.getWinSize()
+
+        var ground = new cp.SegmentShape(this.space.staticBody, cp.v(0,0), cp.v(winSize.width,0), 0)
+        this.space.addStaticShape(ground);
     },
 
     update:function (dt) {

@@ -14,7 +14,7 @@ var AnimationLayer = cc.Layer.extend({
         cc.log("AnimationLayer.init ...")
         this._super();
 
-        var nBalls = 10
+        var nBalls = 1
 
         for (var i = 0; i < nBalls; ++i) {
             var winSize = cc.director.getWinSize()

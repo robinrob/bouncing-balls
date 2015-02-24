@@ -1,8 +1,10 @@
 var Ball = cc.Node.extend({
     radius: null,
-    body: null,
     draw: null,
+    body: null,
     shape: null,
+    sprite: null,
+    position: null,
 
     ctor:function (position, radius, space) {
         cc.log("Ball.ctor ...")
@@ -12,26 +14,40 @@ var Ball = cc.Node.extend({
         this.radius = radius
         this.space = space;
 
-        var start_x = position.x
-        var start_y = position.y
+        this.position = position
 
-        this.draw = new cc.DrawNode();
-        this.addChild(this.draw)
+        this.init()
+    },
 
-        this.draw.drawDot(cc.p(start_x, start_y), this.radius, cc.color(255, 0, 0, 255));
+    init:function() {
+        //this.draw = new cc.DrawNode();
+        //this.addChild(this.draw)
+        //
+        //this.draw.drawDot(cc.p(start_x, start_y), this.radius, cc.color(255, 0, 0, 255));
 
-        // mass, moment of intertia
-        this.body = new cp.Body(1, 5);
+        cc.spriteFrameCache.addSpriteFrames(mrrobinsmith.res.fish_plist);
+        this.spriteSheet = new cc.SpriteBatchNode(mrrobinsmith.res.fish_png);
+        this.addChild(this.spriteSheet);
 
-        this.body.p = cc.p(start_x, start_y);
+        this.sprite = new cc.PhysicsSprite("#fish1.png");
 
-        this.body.applyImpulse(cp.v(20, 100), cp.v(0, 0));//run speed
+        this.spriteSheet.addChild(this.sprite);
+
+        var contentSize = this.sprite.getContentSize();
+        // 2. init the runner physic body
+        this.body = new cp.Body(1, cp.momentForBox(1, contentSize.width, contentSize.height));
+
+        this.body.p = cc.p(this.position.x, this.position.y);
+
+        this.body.applyImpulse(cp.v(20, -100), cp.v(0, 0));//run speed
 
         this.space.addBody(this.body);
 
-        this.shape = new cp.CircleShape(this.body, this.radius, 0)
+        this.shape = new cp.CircleShape(this.body, this.radius, 10)
 
         this.space.addShape(this.shape)
+
+        this.sprite.setBody(this.body)
     },
 
     move: function(dt) {
@@ -39,6 +55,6 @@ var Ball = cc.Node.extend({
         var x = this.body.getPos().x
         var y = this.body.getPos().y
         console.log("y: " + y)
-        this.draw.drawDot(cc.p(x, y), this.radius, cc.color(255, 0, 0, 255))
+        //this.draw.drawDot(cc.p(x, y), this.radius, cc.color(255, 0, 0, 255))
     }
 })

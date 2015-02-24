@@ -5,7 +5,7 @@
     "showFPS" : false,
     "frameRate" : 60,
     "id" : "gameCanvas",
-    "renderMode" : 0,
+    "renderMode" : 1,
     "engineDir":"frameworks/cocos2d-html5",
 
     "modules" : ["cocos2d","chipmunk"],
@@ -13,15 +13,11 @@
     "jsList" : [
         "src/AnimationLayer.js",
         "src/Ball.js",
-        "src/BackgroundLayer.js",
         "src/CompositeSprite.js",
-        "src/GameOverLayer.js",
         "src/globals.js",
         "src/MenuLayer.js",
         "src/MenuScene.js",
         "src/PlayScene.js",
-        "src/SimpleRecognizer.js",
-        "src/StatusLayer.js",
         "src/ui.js"
     ]
 }
