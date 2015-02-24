@@ -11,10 +11,10 @@ var PlayScene = cc.Scene.extend({
         this.gameLayer = new cc.Layer();
 
         //add Background layer and Animation layer to gameLayer
-        this.gameLayer.addChild(new BackgroundLayer(this.space), 0, mrrobinsmith.TagOfLayer.background);
+        //this.gameLayer.addChild(new BackgroundLayer(this.space), 0, mrrobinsmith.TagOfLayer.background);
         this.gameLayer.addChild(new AnimationLayer(this.space), 0, mrrobinsmith.TagOfLayer.Animation);
         this.addChild(this.gameLayer);
-        this.addChild(new StatusLayer(), 0, mrrobinsmith.TagOfLayer.Status);
+        //this.addChild(new StatusLayer(), 0, mrrobinsmith.TagOfLayer.Status);
 
         //add background music
         cc.audioEngine.playMusic(mrrobinsmith.res.music_background, true);
@@ -36,17 +36,6 @@ var PlayScene = cc.Scene.extend({
             cp.v(4294967295, mrrobinsmith.g_groundHeight),// MAX INT:4294967295
             0);// thickness of wall
         this.space.addStaticShape(wallBottom);
-
-        // setup chipmunk CollisionHandler
-        this.space.addCollisionHandler(
-            mrrobinsmith.SpriteTag.runner,
-            mrrobinsmith.SpriteTag.coin,
-            this.collisionCoinBegin.bind(this), null, null, null);
-
-        this.space.addCollisionHandler(
-            mrrobinsmith.SpriteTag.runner,
-            mrrobinsmith.SpriteTag.rock,
-            this.collisionRockBegin.bind(this), null, null, null)
     },
 
     collisionCoinBegin:function (arbiter, space) {

@@ -16,7 +16,7 @@ var MenuLayer = cc.Layer.extend({
         var centerpos = cc.p(winsize.width / 2, winsize.height / 2);
 
         //4. create a background image and set it's position at the center of the screen
-        var spritebg = new cc.Sprite(mrrobinsmith.res.helloBG_png);
+        var spritebg = new cc.Sprite(mrrobinsmith.res.menu_background_png);
         spritebg.setPosition(centerpos);
         this.addChild(spritebg);
 

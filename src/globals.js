@@ -9,14 +9,6 @@ var mrrobinsmith = {
     g_buttonTextColor: new cc.color(0, 255, 0, 0)
 }
 
-if(typeof mrrobinsmith.SpriteTag == "undefined") {
-    var SpriteTag = {};
-    SpriteTag.runner = 0;
-    SpriteTag.coin = 1;
-    SpriteTag.rock = 2;
-    mrrobinsmith.SpriteTag = SpriteTag
-};
-
 if(typeof mrrobinsmith.TagOfLayer == "undefined") {
     var TagOfLayer = {};
     TagOfLayer.background = 0;
@@ -39,21 +31,7 @@ mrrobinsmith.res = {
 
     restart_n_text_png: "res/restart_n-text.png",
     restart_s_text_png: "res/restart_s-text.png",
-
-    helloBG_png: "res/bouncing-ball-bg.jpg",
-    PlayBG_png: "res/PlayBG.png",
-    runner_png: "res/running.png",
-    runner_plist: "res/running.plist",
-    fish_png: "res/fish.png",
-    fish_plist: "res/fish.plist",
-    map_png: "res/map.png",
-    map00_tmx: "res/map00.tmx",
-    map01_tmx: "res/map01.tmx",
-    background_png: "res/background.png",
-    background_plist: "res/background.plist",
-    music_background: "res/background.ogg",
-    music_jump: "res/jump.ogg",
-    music_pickup_coin: "res/pickup_coin.ogg"
+    music_background: "res/background.ogg"
 };
 
 mrrobinsmith.resources = [];
