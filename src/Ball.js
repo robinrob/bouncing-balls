@@ -20,18 +20,14 @@ var Ball = cc.Node.extend({
     },
 
     init:function() {
+        cc.log("Ball.init ...")
         this._super()
-        //this.draw = new cc.DrawNode();
-        //this.addChild(this.draw)
-        //
-        //this.draw.drawDot(cc.p(start_x, start_y), this.radius, cc.color(255, 0, 0, 255));
 
         cc.spriteFrameCache.addSpriteFrames(mrrobinsmith.res.fish_plist);
         this.spriteSheet = new cc.SpriteBatchNode(mrrobinsmith.res.fish_png);
         this.addChild(this.spriteSheet);
 
         this.sprite = new cc.PhysicsSprite("#fish1.png");
-
         this.spriteSheet.addChild(this.sprite);
 
         var contentSize = this.sprite.getContentSize();
@@ -44,12 +40,14 @@ var Ball = cc.Node.extend({
 
         this.space.addBody(this.body);
 
-        this.shape = new cp.CircleShape(this.body, this.radius, 10)
+        this.shape = new cp.BoxShape(this.body, this.radius, this.radius);
 
         this.space.addShape(this.shape)
 
         this.sprite.setBody(this.body)
     },
+
+
 
     move: function(dt) {
         //console.log("x: " + this.body.x)

@@ -35,6 +35,23 @@ mrrobinsmith.res = {
     fish_plist : "res/fish.plist"
 };
 
+res = {
+    // Buttons
+    button_outer_png: "res/button-outer.png",
+
+    button_n_inner_png: "res/button_n-inner.png",
+    button_s_inner_png: "res/button_s-inner.png",
+
+    start_n_text_png: "res/start_n-text.png",
+    start_s_text_png: "res/start_s-text.png",
+
+    restart_n_text_png: "res/restart_n-text.png",
+    restart_s_text_png: "res/restart_s-text.png",
+
+    fish_png  : "res/fish.png",
+    fish_plist : "res/fish.plist"
+};
+
 mrrobinsmith.resources = [];
 for (var i in mrrobinsmith.res) {
     mrrobinsmith.resources.push(mrrobinsmith.res[i]);
