@@ -36,11 +36,13 @@ var Ball = cc.Node.extend({
 
         this.body.p = cc.p(this.position.x, this.position.y);
 
-        this.body.applyImpulse(cp.v(20, -100), cp.v(0, 0));//run speed
+        this.body.applyImpulse(cp.v(20, 0), cp.v(0, 0));//run speed
 
         this.space.addBody(this.body);
 
-        this.shape = new cp.BoxShape(this.body, this.radius, this.radius);
+        this.shape = new cp.CircleShape(this.body, this.radius, 10)
+        this.shape = new cp.BoxShape(this.body, this.radius * 2, this.radius * 2);
+        this.shape.setElasticity(0.8)
 
         this.space.addShape(this.shape)
 
