@@ -2,7 +2,6 @@ cc.log("Setting globals ...")
 
 var mrrobinsmith = {
     g_groundHeight: 57,
-    g_runnerStartX: 80,
 
     g_buttonOuterColor: new cc.color(0, 255, 0, 0),
     g_buttonInnerColor: new cc.color(0, 0, 255, 0),
@@ -30,8 +29,7 @@ mrrobinsmith.res = {
     start_s_text_png: "res/start_s-text.png",
 
     restart_n_text_png: "res/restart_n-text.png",
-    restart_s_text_png: "res/restart_s-text.png",
-    music_background: "res/background.ogg"
+    restart_s_text_png: "res/restart_s-text.png"
 };
 
 mrrobinsmith.resources = [];

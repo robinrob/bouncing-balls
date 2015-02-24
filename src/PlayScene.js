@@ -16,9 +16,6 @@ var PlayScene = cc.Scene.extend({
         this.addChild(this.gameLayer);
         //this.addChild(new StatusLayer(), 0, mrrobinsmith.TagOfLayer.Status);
 
-        //add background music
-        cc.audioEngine.playMusic(mrrobinsmith.res.music_background, true);
-
         this.scheduleUpdate();
     },
 
@@ -28,7 +25,7 @@ var PlayScene = cc.Scene.extend({
         //1. new space object
         this.space = new cp.Space();
         //2. setup the  Gravity
-        this.space.gravity = cp.v(0, -350);
+        this.space.gravity = cp.v(0, -200);
 
         // 3. set up Walls
         var wallBottom = new cp.SegmentShape(this.space.staticBody,
@@ -36,30 +33,6 @@ var PlayScene = cc.Scene.extend({
             cp.v(4294967295, mrrobinsmith.g_groundHeight),// MAX INT:4294967295
             0);// thickness of wall
         this.space.addStaticShape(wallBottom);
-    },
-
-    collisionCoinBegin:function (arbiter, space) {
-        cc.log("PlayScene.collisionCoinBegin ...")
-        var shapes = arbiter.getShapes();
-        // shapes[0] is runner
-        this.shapesToRemove.push(shapes[1]);
-
-        //add the collect coin audio effect in *collisionCoinBegin* method of PlayScene
-        cc.audioEngine.playEffect(mrrobinsmith.res.music_pickup_coin);
-
-        var statusLayer = this.getChildByTag(mrrobinsmith.TagOfLayer.Status);
-        statusLayer.addCoin(1);
-    },
-
-    collisionRockBegin:function (arbiter, space) {
-        cc.log("PlayScene.collisionRockBegin ...")
-        cc.log("==game over");
-
-        //stop bg music
-        cc.audioEngine.stopMusic();
-
-        cc.director.pause();
-        this.addChild(new GameOverLayer());
     },
 
     update:function (dt) {
