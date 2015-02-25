@@ -37,14 +37,9 @@ var AnimationLayer = cc.Layer.extend({
         var verticalSpace = winSize.height - mrrobinsmith.groundHeight - 200
 
         for (var i = 0; i < nPlatforms; ++i) {
-            var x1 = i * winSize.width / nPlatforms
-            var x2 = (i + 1) * winSize.width / nPlatforms
+            var thickness = 10
 
-            var y1 = mrrobinsmith.groundHeight + verticalSpace * (1 - (1 / nPlatforms) * (i + 1))
-            var y2 = y1 - this.thickness
 
-            var plat = new Platform(cc.p(x1, y1), cc.p(x2, y2), this.space, 10)
-            this.addChild(plat)
         }
     },
 
