@@ -4,9 +4,10 @@ var Ball = cc.Node.extend({
     body: null,
     shape: null,
     sprite: null,
-    position: null,
+    startPos: null,
+    leftHeight: null,
 
-    ctor:function (position, radius, space) {
+    ctor:function (position, leftHeight, radius, space) {
         cc.log("Ball.ctor ...")
 
         this._super();
@@ -17,7 +18,9 @@ var Ball = cc.Node.extend({
 
         this.space = space;
 
-        this.position = position
+        this.startPos = position
+
+        this.leftHeight = leftHeight
 
         this.init()
     },
@@ -32,7 +35,7 @@ var Ball = cc.Node.extend({
 
         // ball physics
         this.body = new cp.Body(10, cp.momentForCircle(10, 0, this.radius, cp.v(0,0)));
-        this.body.p = cc.p(this.position.x, this.position.y);
+        this.body.p = cc.p(this.startPos.x, this.startPos.y);
         this.body.applyImpulse(cp.v(1000, 0), cp.v(0, 0));//run speed
 
         // ball collision model
@@ -55,9 +58,11 @@ var Ball = cc.Node.extend({
     move:function(dt) {
         var x = this.body.getPos().x
         var y = this.body.getPos().y
+        
         var winSize = cc.director.getWinSize()
+        
         if (x > winSize.width) {
-            this.body.setPos(cc.p(0 + this.radius / 2, y))
+            this.body.setPos(cc.p(0 + this.radius / 2, this.leftHeight + y))
         }
         console.log("y: " + y)
         this.draw(x, y)

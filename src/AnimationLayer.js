@@ -19,24 +19,25 @@ var AnimationLayer = cc.Layer.extend({
 
         var winSize = cc.director.getWinSize()
 
-        var nBalls = 1
-        var nPlatforms = 5
+        var nBalls = 10
+        var nPlatforms = 3
 
         var platWidth = winSize.width / nPlatforms
+        var verticalSpace = winSize.height - mrrobinsmith.groundHeight - 200
+        var leftPlatHeight = mrrobinsmith.groundHeight + verticalSpace * (1 - (1 / nPlatforms) * (0 + 1))
 
         for (var i = 0; i < nBalls; ++i) {
             console.log(winSize.width)
             var radius = 10
             var gap = radius * 3
-            var pos = cc.p(platWidth / 2, winSize.height - 20);
 
-            var ball = new Ball(pos, radius, this.space);
+            var pos = cc.p(platWidth / 2, leftPlatHeight + 50);
+
+            var ball = new Ball(pos, leftPlatHeight, radius, this.space);
 
             this.balls.push(ball);
             this.addChild(ball)
         }
-
-        var verticalSpace = winSize.height - mrrobinsmith.groundHeight - 200
 
         for (var i = 0; i < nPlatforms; ++i) {
             var thickness = 10
@@ -47,7 +48,7 @@ var AnimationLayer = cc.Layer.extend({
             var y1 = mrrobinsmith.groundHeight + verticalSpace * (1 - (1 / nPlatforms) * (i + 1))
             var y2 = y1 - thickness
 
-            var plat = new Platform(cc.p(x1, y1), cc.p(x1, y2), thickness, this.space)
+            var plat = new Platform(cc.p(x1, y1), cc.p(x2, y2), thickness, this.space)
             this.addChild(plat)
         }
     },

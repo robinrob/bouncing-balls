@@ -10,6 +10,8 @@ var Platform = cc.Node.extend({
 
         ctor:function(top_left, bottom_right, thickness, space) {
             cc.log("Platform.ctor ...")
+            this._super()
+
             this.space = space
 
             this.thickness = thickness
@@ -25,6 +27,8 @@ var Platform = cc.Node.extend({
 
         init:function() {
             cc.log("Platform.init ...")
+            this._super()
+
             this.shape = new cp.SegmentShape(this.space.staticBody, this.v1, this.v2, 0)
             this.shape.setElasticity(1.0)
             this.space.addStaticShape(this.shape)
