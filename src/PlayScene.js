@@ -22,7 +22,7 @@ var PlayScene = cc.Scene.extend({
         //1. new space object
         this.space = new cp.Space();
         //2. setup the  Gravity
-        this.space.gravity = cp.v(0, -200);
+        this.space.gravity = cp.v(0, -350);
 
         // 3. set up Walls
         var winSize = cc.director.getWinSize()

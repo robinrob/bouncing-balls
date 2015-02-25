@@ -1,6 +1,5 @@
 var Ball = cc.Node.extend({
     radius: null,
-    color: null,
     _draw: null,
     body: null,
     shape: null,
@@ -14,7 +13,7 @@ var Ball = cc.Node.extend({
 
         this.radius = radius
 
-        this.color = cc.Color(255, 0, 0, 255)
+        this.color = cc.color(255, 0, 0, 255)
 
         this.space = space;
 
@@ -27,47 +26,36 @@ var Ball = cc.Node.extend({
         cc.log("Ball.init ...")
         this._super()
 
-        //cc.spriteFrameCache.addSpriteFrames(mrrobinsmith.res.fish_plist);
-        //this.spriteSheet = new cc.SpriteBatchNode(mrrobinsmith.res.fish_png);
-        //this.addChild(this.spriteSheet);
-
-        //this.sprite = new cc.PhysicsSprite("#fish1.png");
-        //this.spriteSheet.addChild(this.sprite);
-
-        //var contentSize = this.sprite.getContentSize();
-
+        // ball graphics
         this._draw = new cc.DrawNode()
         this.addChild(this._draw)
 
-        this.draw()
-
+        // ball physics
         this.body = new cp.Body(10, cp.momentForCircle(10, 0, this.radius, cp.v(0,0)));
-        //this.body = new cp.Body(1, cp.momentForBox(1, contentSize.width, contentSize.height));
-
         this.body.p = cc.p(this.position.x, this.position.y);
+        this.body.applyImpulse(cp.v(300, 0), cp.v(0, 0));//run speed
 
-        this.body.applyImpulse(cp.v(20, 0), cp.v(0, 0));//run speed
-
-        //this.sprite.setBody(this.body)
-
-        this.space.addBody(this.body);
-
+        // ball collision model
         this.shape = new cp.CircleShape(this.body, this.radius, cp.v(0,0))
         this.shape.setElasticity(0.8)
 
+        this.space.addBody(this.body);
         this.space.addShape(this.shape)
+
+        this.draw()
     },
 
 
-    draw:function() {
-        this.draw.drawCircle(this.position, this.radius, cc.degreesToRadians(90), 12, false, 2, this.color)
+    draw:function(x, y) {
+        this._draw.clear()
+        this._draw.drawDot(cc.p(x, y), this.radius, this.color)
+        //this._draw.drawCircle(cc.p(x, y), this.radius, 0, 12, false, 2, this.color)
     },
 
     move:function(dt) {
-        //console.log("x: " + this.body.x)
         var x = this.body.getPos().x
         var y = this.body.getPos().y
         console.log("y: " + y)
-        this._draw()
+        this.draw(x, y)
     }
 })
