@@ -1,11 +1,11 @@
 cc.log("Setting globals ...")
 
 var mrrobinsmith = {
-    g_groundHeight: 57,
+    groundHeight: 40,
 
-    g_buttonOuterColor: new cc.color(0, 255, 0, 0),
-    g_buttonInnerColor: new cc.color(0, 0, 255, 0),
-    g_buttonTextColor: new cc.color(0, 255, 0, 0)
+    buttonOuterColor: new cc.color(0, 255, 0, 0),
+    buttonInnerColor: new cc.color(0, 0, 255, 0),
+    buttonTextColor: new cc.color(0, 255, 0, 0)
 }
 
 if(typeof mrrobinsmith.TagOfLayer == "undefined") {

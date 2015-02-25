@@ -17,6 +17,7 @@
         "src/globals.js",
         "src/MenuLayer.js",
         "src/MenuScene.js",
+        "src/Platform.js",
         "src/PlayScene.js",
         "src/ui.js"
     ]
