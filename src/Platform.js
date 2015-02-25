@@ -9,7 +9,8 @@ var Platform = cc.Node.extend({
         v2: null,
 
         ctor:function(top_left, bottom_right, thickness, space) {
-            this.space
+            cc.log("Platform.ctor ...")
+            this.space = space
 
             this.thickness = thickness
 
@@ -23,15 +24,15 @@ var Platform = cc.Node.extend({
         },
 
         init:function() {
-            this.shape = new cp.SegmentShape(this.space.staticBody, v1, v2, 0)
+            cc.log("Platform.init ...")
+            this.shape = new cp.SegmentShape(this.space.staticBody, this.v1, this.v2, 0)
             this.shape.setElasticity(1.0)
-            this.space.addStaticShape(shape)
+            this.space.addStaticShape(this.shape)
 
             var blue = cc.color(0, 0, 255, 255)
 
             this.draw = new cc.DrawNode()
-            this.draw.drawRect(p1, p2, blue, 0, blue)
-
+            this.draw.drawRect(this.p1, this.p2, blue, 0, blue)
             this.addChild(this.draw)
         }
-}
+})

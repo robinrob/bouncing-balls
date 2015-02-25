@@ -17,16 +17,18 @@ var AnimationLayer = cc.Layer.extend({
         cc.log("AnimationLayer.init ...")
         this._super();
 
+        var winSize = cc.director.getWinSize()
+
         var nBalls = 1
         var nPlatforms = 5
 
-        var winSize = cc.director.getWinSize()
+        var platWidth = winSize.width / nPlatforms
 
         for (var i = 0; i < nBalls; ++i) {
             console.log(winSize.width)
             var radius = 10
             var gap = radius * 3
-            var pos = cc.p(winSize.width / 2 - (nBalls / 2 * gap) + (i * gap), winSize.height / 2);
+            var pos = cc.p(platWidth / 2, winSize.height - 20);
 
             var ball = new Ball(pos, radius, this.space);
 
@@ -39,7 +41,14 @@ var AnimationLayer = cc.Layer.extend({
         for (var i = 0; i < nPlatforms; ++i) {
             var thickness = 10
 
+            var x1 = i * platWidth
+            var x2 = (i + 1) * platWidth
 
+            var y1 = mrrobinsmith.groundHeight + verticalSpace * (1 - (1 / nPlatforms) * (i + 1))
+            var y2 = y1 - thickness
+
+            var plat = new Platform(cc.p(x1, y1), cc.p(x1, y2), thickness, this.space)
+            this.addChild(plat)
         }
     },
 
