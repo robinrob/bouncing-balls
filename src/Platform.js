@@ -1,7 +1,7 @@
 var Platform = cc.Node.extend({
         space: null,
         shape: null,
-        draw: null,
+        _draw: null,
         thickness: null,
         p1: null,
         p2: null,
@@ -31,8 +31,8 @@ var Platform = cc.Node.extend({
 
             var blue = cc.color(0, 0, 255, 255)
 
-            this.draw = new cc.DrawNode()
-            this.draw.drawRect(this.p1, this.p2, blue, 0, blue)
-            this.addChild(this.draw)
+            this._draw = new cc.DrawNode()
+            this._draw.drawRect(this.p1, this.p2, blue, 0, blue)
+            this.addChild(this._draw)
         }
 })
