@@ -1,5 +1,7 @@
+
 var AnimationLayer = cc.Layer.extend({
     balls: null,
+    space: null,
 
     ctor:function (space) {
         cc.log("AnimationLayer.ctor ...")
@@ -32,7 +34,6 @@ var AnimationLayer = cc.Layer.extend({
         var blue = cc.color(0, 0, 255, 255)
         var draw = new cc.DrawNode()
         draw.drawRect(cc.p(0, 20), cc.p(winSize.width, 0), blue, 10, blue)
-        this.addChild(draw)
     },
 
     update: function(dt) {
