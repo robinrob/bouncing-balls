@@ -64,7 +64,7 @@ var Ball = cc.Node.extend({
         if (x > winSize.width) {
             this.body.setPos(cc.p(0 + this.radius / 2, this.leftHeight + y))
         }
-        console.log("y: " + y)
+        //console.log("y: " + y)
         this.draw(x, y)
     }
 })

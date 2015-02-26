@@ -54,7 +54,7 @@ var AnimationLayer = cc.Layer.extend({
 
     update: function(dt) {
         this.balls.forEach(function(ball) {
-            console.log("ball: " + ball)
+            //console.log("ball: " + ball)
             ball.move(dt)
         })
     }

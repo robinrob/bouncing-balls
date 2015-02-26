@@ -15,8 +15,7 @@ var ConsoleLayer = cc.Layer.extend({
 
         this.labelGravity = new cc.LabelTTF("Wanker", "Helvetica", 20);
         this.updateGravity(mrrobinsmith.gravity);
-        this.labelGravity.setColor(cc.color(0,0,0));//black color
-        this.labelGravity.setPosition(cc.p(70, winsize.height - 20));
+        this.labelGravity.setPosition(cc.p(winsize.width - 70, winsize.height - 120));
         this.addChild(this.labelGravity);
     },
 

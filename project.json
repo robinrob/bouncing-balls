@@ -14,6 +14,7 @@
         "src/AnimationLayer.js",
         "src/Ball.js",
         "src/CompositeSprite.js",
+        "src/ConsoleLayer.js",
         "src/globals.js",
         "src/MenuLayer.js",
         "src/MenuScene.js",
