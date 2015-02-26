@@ -90,10 +90,10 @@ var Ball = cc.Node.extend({
     draw:function(x, y) {
         this._draw.clear()
         if (mrrobinsmith.fishMode) {
-            this.sprite.setOpacity(255)
+            this.sprite.setVisible(true)
         }
         else if (!mrrobinsmith.fishMode) {
-            this.sprite.setOpacity(0)
+            this.sprite.setVisible(false)
             this._draw.drawDot(cc.p(x, y), this.radius, this.color)
         }
     },
