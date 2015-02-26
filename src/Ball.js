@@ -51,14 +51,14 @@ var Ball = cc.Node.extend({
     initFish:function() {
         cc.spriteFrameCache.addSpriteFrames(res.fish_plist);
         this.initAction()
-        this.initFishSpriteSheet()
         this.initFishSprite()
-        this.spriteSheet.addChild(this.sprite);
+        this.initFishSpriteSheet()
     },
 
     initFishSpriteSheet:function() {
         this.spriteSheet = new cc.SpriteBatchNode(res.fish_png);
         this.addChild(this.spriteSheet);
+        this.spriteSheet.addChild(this.sprite)
     },
 
     initFishSprite:function() {
@@ -114,12 +114,6 @@ var Ball = cc.Node.extend({
     onExit:function() {
         cc.log("AnimationLayer.onExit ...")
         this.runningAction.release();
-        if (this.jumpUpAction) {
-            this.jumpUpAction.release();
-        }
-        if (this.jumpDownAction) {
-            this.jumpDownAction.release();
-        }
 
         this._super();
     }
