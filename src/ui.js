@@ -43,6 +43,14 @@ var ui = {
         return buttons
     },
 
+    fishButton: function fishButton() {
+        var sprite = new cc.Sprite("#fish1.png");
+        var btn = cc.ControlButton.create("Gravity", "#fish1.png", 20)
+        btn.setPreferredSize(cc.Size(40, 40))
+
+        return btn
+    },
+
     // Example singleton implementation for reference
     example: function example() {
         if (typeof example.instance === "undefined") {

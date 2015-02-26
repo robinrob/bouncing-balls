@@ -17,6 +17,8 @@ var ConsoleLayer = cc.Layer.extend({
         this.updateGravity(mrrobinsmith.gravity);
         this.labelGravity.setPosition(cc.p(winsize.width - 70, winsize.height - 120));
         this.addChild(this.labelGravity);
+
+        this.addChild(ui.fishButton())
     },
 
     updateGravity:function (gravity) {
