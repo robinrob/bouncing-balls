@@ -7,7 +7,9 @@ var mrrobinsmith = {
     buttonInnerColor: new cc.color(0, 0, 255, 0),
     buttonTextColor: new cc.color(0, 255, 0, 0),
 
-    gravity: -350
+    gravity: -350,
+
+    fishMode: true
 }
 
 if(typeof mrrobinsmith.TagOfLayer == "undefined") {
