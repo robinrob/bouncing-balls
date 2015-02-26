@@ -1,4 +1,3 @@
-
 var AnimationLayer = cc.Layer.extend({
     balls: null,
     platforms: null,

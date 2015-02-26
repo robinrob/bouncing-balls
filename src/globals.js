@@ -5,14 +5,15 @@ var mrrobinsmith = {
 
     buttonOuterColor: new cc.color(0, 255, 0, 0),
     buttonInnerColor: new cc.color(0, 0, 255, 0),
-    buttonTextColor: new cc.color(0, 255, 0, 0)
+    buttonTextColor: new cc.color(0, 255, 0, 0),
+
+    gravity: -350
 }
 
 if(typeof mrrobinsmith.TagOfLayer == "undefined") {
     var TagOfLayer = {};
-    TagOfLayer.background = 0;
     TagOfLayer.Animation = 1;
-    TagOfLayer.Status = 2;
+    TagOfLayer.Console = 2;
     mrrobinsmith.TagOfLayer = TagOfLayer;
 };
 

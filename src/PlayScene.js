@@ -12,6 +12,7 @@ var PlayScene = cc.Scene.extend({
 
         this.gameLayer.addChild(new AnimationLayer(this.space), 0, mrrobinsmith.TagOfLayer.Animation);
         this.addChild(this.gameLayer);
+        this.addChild(new ConsoleLayer(this.space), 0, mrrobinsmith.TagOfLayer.Console)
 
         this.scheduleUpdate();
     },
@@ -22,7 +23,7 @@ var PlayScene = cc.Scene.extend({
         //1. new space object
         this.space = new cp.Space();
         //2. setup the  Gravity
-        this.space.gravity = cp.v(0, -350);
+        this.space.gravity = cp.v(0, mrrobinsmith.gravity);
 
         // 3. set up Walls
         var winSize = cc.director.getWinSize()
