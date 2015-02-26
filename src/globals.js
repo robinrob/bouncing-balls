@@ -9,7 +9,7 @@ var mrrobinsmith = {
 
     gravity: -350,
 
-    fishMode: true
+    fishMode: false
 }
 
 if(typeof mrrobinsmith.TagOfLayer == "undefined") {

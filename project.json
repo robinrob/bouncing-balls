@@ -8,7 +8,7 @@
     "renderMode" : 1,
     "engineDir":"frameworks/cocos2d-html5",
 
-    "modules" : ["cocos2d","chipmunk"],
+    "modules" : ["cocos2d","chipmunk","gui"],
 
     "jsList" : [
         "src/AnimationLayer.js",
@@ -20,7 +20,7 @@
         "src/MenuScene.js",
         "src/Platform.js",
         "src/PlayScene.js",
-        "src/ui.js",
-        "cocos"
+        "frameworks/cocos2d-html5/extensions/gui/control-extension/CCControlButton.js",
+        "src/ui.js"
     ]
 }

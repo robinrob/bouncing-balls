@@ -38,30 +38,38 @@ var Ball = cc.Node.extend({
         this.space.addBody(this.body);
 
         //ball graphics
-        if (mrrobinsmith.fishMode) {
-            cc.spriteFrameCache.addSpriteFrames(res.fish_plist);
-            this.spriteSheet = new cc.SpriteBatchNode(res.fish_png);
-            this.addChild(this.spriteSheet);
-
-            this.sprite = new cc.PhysicsSprite("#fish1.png");
-            this.sprite.setBody(this.body)
-            this.spriteSheet.addChild(this.sprite);
-
-            this.initAction()
-            this.sprite.runAction(this.runningAction);
-
-            this.radius = this.sprite.getContentSize().width / 2
-        }
-        else {
-            this._draw = new cc.DrawNode()
-            this.addChild(this._draw)
-            this.draw()
-        }
+        this.initBall()
+        this.initFish()
+        this.draw()
 
         // ball collision model
         this.shape = new cp.CircleShape(this.body, this.radius, cp.v(0,0))
         this.shape.setElasticity(0.8)
         this.space.addShape(this.shape)
+    },
+
+    initFish:function() {
+        cc.spriteFrameCache.addSpriteFrames(res.fish_plist);
+        this.initAction()
+        this.initFishSpriteSheet()
+        this.initFishSprite()
+        this.spriteSheet.addChild(this.sprite);
+    },
+
+    initFishSpriteSheet:function() {
+        this.spriteSheet = new cc.SpriteBatchNode(res.fish_png);
+        this.addChild(this.spriteSheet);
+    },
+
+    initFishSprite:function() {
+        this.sprite = new cc.PhysicsSprite("#fish1.png");
+        this.sprite.setBody(this.body)
+        this.sprite.runAction(this.runningAction);
+    },
+
+    initBall:function() {
+        this._draw = new cc.DrawNode()
+        this.addChild(this._draw)
     },
 
     initAction:function() {
@@ -81,8 +89,13 @@ var Ball = cc.Node.extend({
 
     draw:function(x, y) {
         this._draw.clear()
-        this._draw.drawDot(cc.p(x, y), this.radius, this.color)
-        //this._draw.drawCircle(cc.p(x, y), this.radius, 0, 12, false, 2, this.color)
+        if (mrrobinsmith.fishMode) {
+            this.sprite.setOpacity(255)
+        }
+        else if (!mrrobinsmith.fishMode) {
+            this.sprite.setOpacity(0)
+            this._draw.drawDot(cc.p(x, y), this.radius, this.color)
+        }
     },
 
     move:function(dt) {
@@ -94,10 +107,8 @@ var Ball = cc.Node.extend({
         if (x > winSize.width) {
             this.body.setPos(cc.p(0 + this.radius / 2, this.leftHeight + y))
         }
-        //console.log("y: " + y)
-        if (!mrrobinsmith.fishMode) {
-            this.draw(x, y)
-        }
+
+        this.draw(x, y)
     },
 
     onExit:function() {
@@ -111,5 +122,5 @@ var Ball = cc.Node.extend({
         }
 
         this._super();
-    },
+    }
 })

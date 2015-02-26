@@ -45,8 +45,12 @@ var ui = {
 
     fishButton: function fishButton() {
         var sprite = new cc.Sprite("#fish1.png");
-        var btn = cc.ControlButton.create("Gravity", "#fish1.png", 20)
-        btn.setPreferredSize(cc.Size(40, 40))
+        var btn = cc.ControlButton.create("Fish Mode", "#fish1.png", 20)
+        btn.setPreferredSize(cc.size(40, 40))
+        btn.setPosition(cc.p(50, 50))
+        btn.addTargetWithActionForControlEvents(this, function(){
+            mrrobinsmith.fishMode = !mrrobinsmith.fishMode
+        }, cc.CONTROL_EVENT_TOUCH_UP_INSIDE);
 
         return btn
     },

@@ -15,7 +15,7 @@ var ConsoleLayer = cc.Layer.extend({
 
         this.labelGravity = new cc.LabelTTF("Wanker", "Helvetica", 20);
         this.updateGravity(mrrobinsmith.gravity);
-        this.labelGravity.setPosition(cc.p(winsize.width - 70, winsize.height - 120));
+        this.labelGravity.setPosition(cc.p(winsize.width - 70, winsize.height - 80));
         this.addChild(this.labelGravity);
 
         this.addChild(ui.fishButton())
