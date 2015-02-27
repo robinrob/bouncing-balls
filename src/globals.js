@@ -1,7 +1,7 @@
 cc.log("Setting globals ...")
 
 var mrrobinsmith = {
-    groundHeight: 40,
+    groundHeight: 10,
 
     buttonOuterColor: new cc.color(0, 255, 0, 0),
     buttonInnerColor: new cc.color(0, 0, 255, 0),

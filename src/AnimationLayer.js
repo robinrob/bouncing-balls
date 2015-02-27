@@ -1,4 +1,4 @@
-var AnimationLayer = cc.Layer.extend({
+var AnimationLayer = cc.LayerColor.extend({
     balls: null,
     platforms: null,
     space: null,
@@ -16,14 +16,17 @@ var AnimationLayer = cc.Layer.extend({
         cc.log("AnimationLayer.init ...")
         this._super();
 
+        var white = cc.color(255, 255, 255, 255)
+        this.color = white
+
         var winSize = cc.director.getWinSize()
 
         var nBalls = 10
         var nPlatforms = 5
 
         var platWidth = winSize.width / nPlatforms
-        var verticalSpace = winSize.height - mrrobinsmith.groundHeight - 200
-        var leftPlatHeight = mrrobinsmith.groundHeight + verticalSpace * (1 - (1 / nPlatforms) * (0 + 1))
+        var verticalSpace = (winSize.height - mrrobinsmith.groundHeight - 20) / nPlatforms
+        var leftPlatHeight = mrrobinsmith.groundHeight + verticalSpace * (nPlatforms - 1)
 
         for (var i = 0; i < nBalls; ++i) {
             console.log(winSize.width)
@@ -44,7 +47,7 @@ var AnimationLayer = cc.Layer.extend({
             var x1 = i * platWidth
             var x2 = (i + 1) * platWidth
 
-            var y1 = mrrobinsmith.groundHeight + verticalSpace * (1 - (1 / nPlatforms) * (i + 1))
+            var y1 = mrrobinsmith.groundHeight + verticalSpace * (nPlatforms - i - 1)
             var y2 = y1
 
             var plat = new Platform(cc.p(x1, y1), cc.p(x2, y2), thickness, this.space)
