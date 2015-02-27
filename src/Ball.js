@@ -31,10 +31,13 @@ var Ball = cc.Node.extend({
         cc.log("Ball.init ...")
         this._super()
 
+        var angle = Math.random() * 360
+
         // ball physics
         this.body = new cp.Body(10, cp.momentForCircle(10, 0, this.radius, cp.v(0,0)));
         this.body.p = cc.p(this.startPos.x, this.startPos.y);
-        this.body.applyImpulse(cp.v(1000, 0), cp.v(0, 0));//run speed
+        this.body.setAngle(angle)
+        this.body.applyImpulse(cp.v(300, 0), cp.v(0, 0));//run speed
         this.space.addBody(this.body);
 
         //ball graphics
@@ -55,23 +58,6 @@ var Ball = cc.Node.extend({
         this.initFishSpriteSheet()
     },
 
-    initFishSpriteSheet:function() {
-        this.spriteSheet = new cc.SpriteBatchNode(res.fish_png);
-        this.addChild(this.spriteSheet);
-        this.spriteSheet.addChild(this.sprite)
-    },
-
-    initFishSprite:function() {
-        this.sprite = new cc.PhysicsSprite("#fish1.png");
-        this.sprite.setBody(this.body)
-        this.sprite.runAction(this.runningAction);
-    },
-
-    initBall:function() {
-        this._draw = new cc.DrawNode()
-        this.addChild(this._draw)
-    },
-
     initAction:function() {
         cc.log("AnimationLayer.initAction ...")
         // init runningAction
@@ -85,6 +71,23 @@ var Ball = cc.Node.extend({
         var animation = new cc.Animation(animFrames, 0.1);
         this.runningAction = new cc.RepeatForever(new cc.Animate(animation));
         this.runningAction.retain();
+    },
+
+    initFishSprite:function() {
+        this.sprite = new cc.PhysicsSprite("#fish1.png");
+        this.sprite.setBody(this.body)
+        this.sprite.runAction(this.runningAction);
+    },
+
+    initFishSpriteSheet:function() {
+        this.spriteSheet = new cc.SpriteBatchNode(res.fish_png);
+        this.addChild(this.spriteSheet);
+        this.spriteSheet.addChild(this.sprite)
+    },
+
+    initBall:function() {
+        this._draw = new cc.DrawNode()
+        this.addChild(this._draw)
     },
 
     draw:function(x, y) {
@@ -101,11 +104,19 @@ var Ball = cc.Node.extend({
     move:function(dt) {
         var x = this.body.getPos().x
         var y = this.body.getPos().y
+        var v = this.body.getVel()
 
         var winSize = cc.director.getWinSize()
 
+        // Reset to left-side of screen
         if (x > winSize.width) {
             this.body.setPos(cc.p(0 + this.radius / 2, this.leftHeight + y))
+            this.body.setVel(cp.v(this.body.getVel().x, 0))
+        }
+        // Reset to right-side of screen
+        else if (x < 0) {
+            this.body.setPos(cc.p(winSize.width - this.radius / 2, y))
+            this.body.setVel(cp.v(this.body.getVel().x, 0))
         }
 
         this.draw(x, y)
