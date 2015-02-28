@@ -29,7 +29,7 @@ var MenuLayer = cc.Layer.extend({
         menu.setPosition(centerpos);
         this.addChild(menu);
 
-        this.onPlay()
+        //this.onPlay()
     },
 
     onPlay : function(){

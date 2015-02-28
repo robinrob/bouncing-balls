@@ -1,3 +1,8 @@
 .DS_Store
 runtime
-frameworks
+frameworks/*
+!frameworks/runtime-src
+frameworks/runtime-src/*
+!frameworks/runtime-src/proj.android
+frameworks/runtime-src/proj.android/*
+!frameworks/runtime-src/proj.android/AndroidManifest.xml

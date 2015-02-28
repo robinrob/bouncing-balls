@@ -49,12 +49,11 @@
 
 
 cc.game.onStart = function(){
-    cc.log("cc.game.onStart ...");
     cc.view.adjustViewPort(true);
-    cc.view.setDesignResolutionSize(640, 320, cc.ResolutionPolicy.SHOW_ALL);
-    // E.g. when device rotated
+    cc.view.setDesignResolutionSize(480,720,cc.ResolutionPolicy.SHOW_ALL);
     cc.view.resizeWithBrowserSize(true);
-    //load resources
+    cc.director.setProjection(cc.Director.PROJECTION_2D);
+
     cc.LoaderScene.preload(mrrobinsmith.resources, function () {
         cc.director.runScene(new MenuScene());
     }, this);
