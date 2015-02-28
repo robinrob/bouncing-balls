@@ -10,7 +10,6 @@ var PlayScene = cc.Scene.extend({
         this.initPhysics();
         this.gameLayer = new cc.Layer();
 
-        var white = cc.color(255, 255, 255, 255)
         this.gameLayer.addChild(new AnimationLayer(this.space), 0, mrrobinsmith.TagOfLayer.Animation);
         this.addChild(this.gameLayer);
         //this.addChild(new StatusLayer(), 0, TagOfLayer.Status);

@@ -17,16 +17,19 @@ var AnimationLayer = cc.LayerColor.extend({
         this._super();
 
         var white = cc.color(255, 255, 255, 255)
-        this.color = white
+        var black = cc.color(0, 0, 0, 255)
+        var color = black
+
+        this.color = color
 
         var winSize = cc.director.getWinSize()
 
         var nBalls = 10
-        var nPlatforms = 5
+        var nPlatforms = 3
 
         var platWidth = winSize.width / nPlatforms
         var verticalSpace = (winSize.height - mrrobinsmith.groundHeight - 20) / nPlatforms
-        var leftPlatHeight = mrrobinsmith.groundHeight + verticalSpace * (nPlatforms - 1)
+        var leftPlatHeight = mrrobinsmith.groundHeight + verticalSpace * (nPlatforms - 1) - winSize.height / 6
 
         for (var i = 0; i < nBalls; ++i) {
             console.log(winSize.width)
