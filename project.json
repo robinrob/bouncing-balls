@@ -5,7 +5,7 @@
     "showFPS" : false,
     "frameRate" : 60,
     "id" : "gameCanvas",
-    "renderMode" : 1,
+    "renderMode" : 0,
     "engineDir":"frameworks/cocos2d-html5",
 
     "modules" : ["cocos2d","chipmunk","gui"],
@@ -20,7 +20,6 @@
         "src/MenuScene.js",
         "src/Platform.js",
         "src/PlayScene.js",
-        "frameworks/cocos2d-html5/extensions/gui/control-extension/CCControlButton.js",
         "src/ui.js"
     ]
 }
