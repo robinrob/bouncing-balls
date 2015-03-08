@@ -35,7 +35,7 @@ var Ball = cc.Node.extend({
 
         // ball physics
         this.body = new cp.Body(10, cp.momentForCircle(10, 0, this.radius, cp.v(0,0)));
-        this.body.p = cc.p(this.startPos.x, this.startPos.y);
+        this.body.setPos(this.startPos)
         this.body.setAngle(angle)
         this.body.applyImpulse(cp.v(300, 0), cp.v(0, 0));//run speed
         this.space.addBody(this.body);
