@@ -26,21 +26,19 @@ var AnimationLayer = cc.LayerColor.extend({
         var winSize = cc.director.getWinSize()
 
         var nBalls = 10
-        var nPlatforms = 5
+        var nPlatforms = 2
 
         var platWidth = winSize.width / nPlatforms
-        var verticalSpace = winSize.height - mrrobinsmith.groundHeight - winSize.height / 4
+        var verticalSpace = winSize.height - mrrobinsmith.groundHeight - winSize.height / 2
         var gap = verticalSpace / (nPlatforms - 1)
-        var leftPlatHeight = mrrobinsmith.groundHeight + gap * (nPlatforms - 1)
+        var leftPlatHeight = mrrobinsmith.groundHeight + (gap * (nPlatforms - 1))
 
         var groundHeight = mrrobinsmith.groundHeight
 
         for (var i = 0; i < nBalls; ++i) {
-            console.log(winSize.width)
             var radius = 10
-            var gap = radius * 3
 
-            var pos = cc.p(platWidth / 2, leftPlatHeight);
+            var pos = cc.p(platWidth / 2, leftPlatHeight + 100);
 
             var ball = new Ball(pos, leftPlatHeight, radius, this.space);
 
@@ -54,15 +52,13 @@ var AnimationLayer = cc.LayerColor.extend({
             var x1 = i * platWidth
             var x2 = (i + 1) * platWidth
 
-            var y1 = groundHeight + gap * (nPlatforms - i - 1)
+            var y1 = leftPlatHeight - (i * gap)
+            cc.log("y1:  " + y1)
             var y2 = y1
 
             var plat = new Platform(cc.p(x1, y1), cc.p(x2, y2), thickness, this.space)
             this.addChild(plat)
         }
-
-        this._draw = new cc.DrawNode()
-        this._draw.drawSegment(cc.p(0, groundHeight), cc.p(winSize.width, groundHeight), 10, red)
     },
 
     update: function(dt) {

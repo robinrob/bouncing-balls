@@ -25,14 +25,6 @@ var PlayScene = cc.Scene.extend({
         this.space = new cp.Space();
         //2. setup the  Gravity
         this.space.gravity = cp.v(0, mrrobinsmith.gravity);
-
-        // 3. set up Walls
-        var winSize = cc.director.getWinSize()
-
-        var ground = new cp.SegmentShape(this.space.staticBody, cp.v(0,40), cp.v(winSize.width,40), 0)
-        ground.setElasticity(1.0)
-
-        this.space.addStaticShape(ground);
     },
 
     update:function (dt) {
